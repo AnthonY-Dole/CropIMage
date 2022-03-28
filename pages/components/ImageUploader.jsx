@@ -25,7 +25,11 @@ const ImageUploader = () => {
       aspect,
       imageUrl,
     };
+
     console.log('ImageCrop :',newObject)
+    return{
+      ...newObject
+    }
   };
 
   return (
