@@ -3,8 +3,9 @@ import Cropper from "react-easy-crop";
 import getCroppedImg from "./CropperImage";
 
 const aspectRatios = [
-  { value: 4 / 3, text: "M" },
+  { value: 32 / 9, text: "XL" },
   { value: 16 / 9, text: "L" },
+  { value: 4 / 3, text: "M" },
   { value: 1 / 2, text: "S" },
 ];
 
@@ -36,7 +37,8 @@ const ImageToCrop = ({ imageUrl, onCancel, setCroppedImage, }) => {
   const onCrop = async () => {
     try {
       const croppedImageUrl = await getCroppedImg(imageUrl, croppedAreaPixels);
-      console.log('my cropped image', { croppedImageUrl })
+     // console.log('my cropped image', { croppedImageUrl })
+     // console.log('Data Crop :', { imageUrl,crop,zoom,aspect})
       setCroppedImage(crop, zoom, aspect, croppedImageUrl);
     } catch (e) {
       console.error(e)
@@ -57,9 +59,9 @@ const ImageToCrop = ({ imageUrl, onCancel, setCroppedImage, }) => {
         onCropComplete={onCropComplete}
       />
 
-      <div className="fixed bottom-0 w-full h-1/6">
-        <div className=" justify-center flex ">
-          <input className=" flex md:w-1/2 w-4/6 rounded-lg   h-3 w-128" 
+      <div className="fixed bottom-0 w-full  h-1/6">
+        <div className=" justify-center flex pb-5 ">
+          <input className=" flex md:w-1/2 w-4/6 rounded-lg  " 
             type="range"
             min={1}
             max={10}

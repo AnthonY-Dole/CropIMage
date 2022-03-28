@@ -8,7 +8,6 @@ const ImageUploader = () => {
   useEffect(() => {
     if (selectedImage) {
         setImageUrl(URL.createObjectURL(selectedImage));
-      console.log(selectedImage)
     }
 }, [selectedImage]);
 
@@ -20,7 +19,15 @@ const ImageUploader = () => {
     const newImage =croppedImageUrl;
     setImageUrl(newImage);
     setSelectedImage(null);
+    const newObject = {
+      crop,
+      zoom,
+      aspect,
+      imageUrl,
+    };
+    console.log('ImageCrop :',newObject)
   };
+
   return (
     <>
     <h1 className="text-4xl text-center font-extrabold tracking-tight py-10  text-blue-500 sm:text-5xl md:text-6xl overflow:hidden">HASHTAG CROPPER</h1>
@@ -37,11 +44,12 @@ const ImageUploader = () => {
           imageUrl={imageUrl}
           onCancel={onCancel}
           setCroppedImage={setCroppedImage}
-         
+          className="overflow-hidden"
         />
       ) : null}
       <div className="">
       <img className=" m-auto flex justify-center rounded-lg" src={imageUrl}></img>
+     
       </div>
      </>
   );
